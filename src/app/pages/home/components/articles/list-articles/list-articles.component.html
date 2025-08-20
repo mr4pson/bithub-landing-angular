@@ -7,7 +7,18 @@
   <div class="articles">
     <div class="a-content">
       <div class="a-title">
-        {{words['home']?.['awards-title']?.[lang.slug]}}
+        <!-- {{words['home']?.['awards-title']?.[lang.slug]}} -->
+        {{
+          lang.slug === "ru"
+            ? "Статьи"
+            : lang.slug === "ua"
+            ? "Статті"
+            : lang.slug === "uk"
+            ? "Статті"
+            : lang.slug === "en"
+            ? "Articles"
+            : "Articles"
+        }}
       </div>
       <ng-container *ngIf="!articles?.length"
         ><span>{{words['common']?.['empty']?.[lang.slug]}}</span></ng-container

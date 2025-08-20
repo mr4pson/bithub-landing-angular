@@ -1,5 +1,7 @@
 <ul class="menu-main">
-    @for (item of items; track item) {
-        <li><a (click)="onMenuClick(item)">{{words['menu']?.[item]?.[lang.slug]}}</a></li>
-    }    
+  @for (item of items; track item) {
+  <li>
+    <a (click)="onMenuClick(item)">{{words['menu']?.[item]?.[lang.slug]}}</a>
+  </li>
+  }
 </ul>
