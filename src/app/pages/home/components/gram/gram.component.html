@@ -1,0 +1,22 @@
+<div class="gram">
+    <div class="g-content">
+        <div class="g-top">
+            <div class="g-imgwrap"><img src="/assets/images/gram.svg" loading="lazy" alt="gram"></div>
+            <div class="g-title">{{words['home']?.['gram-title']?.[lang.slug]}}</div>            
+        </div>
+        <div class="g-bottom">
+            <div class="g-desc">
+                <p>{{words['home']?.['gram-desc1']?.[lang.slug]}}</p>
+                <p>{{words['home']?.['gram-desc2']?.[lang.slug]}}</p>
+            </div>
+            <div class="g-btnwrap">
+                <a class="btn gold" [href]="mainsiteUrl">
+                    <span class="btn-text">{{words["common"]?.["btn-app"]?.[lang.slug]}}</span>
+                    <span class="btn-icon link"></span>
+                </a>
+            </div>
+            <div class="g-check"><img src="/assets/images/check.svg" loading="lazy" alt="check"></div>
+        </div>
+    </div>
+    <div class="g-blick"><div class="gb-content"></div></div>
+</div>

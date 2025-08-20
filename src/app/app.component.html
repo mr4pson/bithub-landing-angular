@@ -1,0 +1,10 @@
+<div class="win" #win>
+    <popup-error></popup-error>
+    @if (ready) {
+        <the-header></the-header>
+        <router-outlet></router-outlet>
+        <the-footer></the-footer>
+        <the-upper></the-upper>        
+    }    
+</div>
+

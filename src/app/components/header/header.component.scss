@@ -1,0 +1,73 @@
+header {
+    @media (min-width:0) {height: 50px; background: var(--color-bg1);}
+    @media (min-width:1000px) {height: 70px; background: transparent;}
+    position: sticky; z-index: 10; top: 0; border-bottom: 1px var(--color-border1) solid; user-select: none; display: flex; justify-content: center; align-items: center; transition: 0.3s;
+    &.solid {background: var(--color-bg1);}
+    .h-left {
+        @media (min-width:0) {left: 15px;}
+        @media (min-width:1000px) {left: 30px;}
+        position: absolute; top: 0; height: 100%; display: flex; align-items: center;
+        .hl-logo {
+            @media (min-width:0) {padding-inline-end: 0;}
+            @media (min-width:1000px) {padding-inline-end: 15px;}
+            @media (min-width:1600px) {padding-inline-end: 30px;}
+            img {
+                height: 30px;
+                &.big {
+                    @media (min-width:0) {display: none;}
+                    @media (min-width:1000px) {display: block;}
+                }
+                &.small {
+                    @media (min-width:0) {display: block;}
+                    @media (min-width:1000px) {display: none;}
+                }
+            }
+        }
+        .hl-lang {
+            @media (min-width:0) {display: none;}
+            @media (min-width:1000px) {display: flex; padding-inline-start: 15px;}
+            @media (min-width:1600px) {display: flex; padding-inline-start: 30px;}
+            height: 40px; align-items: center; border-left: 1px var(--color-border1) solid; position: relative;
+            .hll-btn {
+                text-transform: uppercase; cursor: pointer; color: var(--color-txt1); transition: 0.3s;
+                @media (hover: hover) and (pointer: fine) {&:hover {color: var(--color-txt2);}}
+                &::after {font-family: "fa-light"; content: "\f078"; display: inline-block; margin-left: 5px; transition: transform 0.3s;}
+                &.active {
+                    color: var(--color-txt2);
+                    &::after {transform: scaleY(-1);}
+                }
+            }
+        }
+    }
+    .h-right {
+        @media (min-width:0) {right: 15px;}
+        @media (min-width:1000px) {right: 30px;}
+        position: absolute; top: 0; height: 100%; display: flex; align-items: center;
+        .hr-appbtn {
+            @media (min-width:0) {display: none;}
+            @media (min-width:1000px) {display: inline-flex;}
+        }
+        .hr-mmbtn {
+            @media (min-width:0) {display: inline-block;}
+            @media (min-width:1000px) {display: none;}
+        }
+    }
+    .h-center {
+        @media (min-width:0) {display: none;}
+        @media (min-width:1000px) {display: flex;}
+        height: 100%; align-items: center;
+        nav {
+            height: 100%;
+            ul {
+                display: flex; height: 100%;
+                li {
+                    height: 100%;
+                    a {
+                        display: flex; height: 100%; align-items: center; padding: 0 15px; color: var(--color-txt1); text-decoration: none;
+                        @media (hover: hover) and (pointer: fine) {&:hover {color: var(--color-txt2);}}
+                    }
+                }
+            }
+        }
+    }
+}

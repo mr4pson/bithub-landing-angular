@@ -1,0 +1,37 @@
+<div class="popup-wrap" [class.active]="active">
+  <div class="popup" id="popup-{{ unique }}">
+    <div class="popup-head">
+      <!-- <div class="popup-headtitle">
+        {{words['login']?.['title']?.[lang.slug]}}51231
+      </div> -->
+      <div class="popup-close" (click)="onClose()"><span></span></div>
+    </div>
+    <div class="popup-main tl_article">
+      <article class="popup-content article-content tl_article_content">
+        <div class="ql-editor" contenteditable="false">
+          <div class="tl_article_header" dir="auto">
+            <h1>{{ appService.selectedArticle.name[lang.slug] }}</h1>
+            <address>
+              <a rel="author">{{
+                appService.selectedArticle.contentshort[lang.slug]
+              }}</a
+              ><!--
+           --><time datetime="2024-10-27T06:21:13+0000">{{
+                appService.selectedArticle.date
+              }}</time>
+            </address>
+          </div>
+          <div
+            class="a-content"
+            [innerHTML]="appService.selectedArticle.content[lang.slug]"
+          ></div>
+          <div
+            *ngIf="appService.selectedArticle.yt_content"
+            class="a-yt"
+            [innerHTML]="appService.selectedArticle.yt_content | safe : 'html'"
+          ></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

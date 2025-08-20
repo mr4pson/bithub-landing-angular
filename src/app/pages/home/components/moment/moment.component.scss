@@ -1,0 +1,50 @@
+.moment {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;}  
+    .m-content {        
+        max-width: var(--width); margin: 0 auto; 
+        .m-title-mob {
+            @media (min-width:0) {display: block;}
+            @media (min-width:640px) {display: none;}
+            color: var(--color-txt2); font-weight: bold; text-transform: uppercase; font-size: 28px; line-height: 30px; margin-bottom: 15px;   
+        }
+        .m-main {
+            @media (min-width:0) {background-size: 100% 150px; }
+            @media (min-width:640px) {background-size: 100% 300px; }
+            @media (min-width:1000px) {background-size: 100% 470px; } 
+            display: flex; justify-content: space-between; align-items: center; background-image: url("/assets/images/block3.svg"); background-position: left center; background-repeat: no-repeat;
+            .m-imgwrap {
+                width: 30%;
+                img {max-width: 100%;}
+            }
+            .m-details {
+                @media (min-width:0) {padding-inline-end: 15px;}
+                @media (min-width:1000px) {padding-inline-end: 30px;} 
+                width: 65%;
+                .m-title-desk {
+                    @media (min-width:0) {display: none;}
+                    @media (min-width:640px) {display: block; font-size: 28px; line-height: 30px; margin-bottom: 15px;}
+                    @media (min-width:1000px) {display: block; font-size: 60px; line-height: 64px; margin-bottom: 30px;} 
+                    color: var(--color-txt2); font-weight: bold; text-transform: uppercase;                
+                }
+                .m-desc {
+                    @media (min-width:0) {font-size: 16px; margin-bottom: 15px;}
+                    @media (min-width:1000px) {font-size: 24px; margin-bottom: 30px;}                
+                }
+                .m-bot {
+                    @media (min-width:0) {padding: 0 15px; height: 35px;}
+                    @media (min-width:1000px) {padding: 0 30px; height: 45px;} 
+                    display: inline-flex; justify-content: center; align-items: center; background-color: #2AABEE; color: var(--color-txt2); font-weight: 600; border-radius: 15px;
+                    span {
+                        display: flex; align-items: center; white-space: nowrap;
+                        &::before {
+                            @media (min-width:0) {width: 20px; height: 16px; margin-inline-end: 5px;}
+                            @media (min-width:1000px) {width: 25px; height: 21px; margin-inline-end: 10px;} 
+                            display: inline-block; background-image: url("/assets/images/tg.svg"); background-size: cover; content: "";
+                        }
+                    }
+                }
+            }
+        }        
+    }
+}

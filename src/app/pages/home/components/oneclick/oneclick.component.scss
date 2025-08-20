@@ -1,0 +1,34 @@
+.oneclick {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;}  
+    background-color: var(--color-bg3);
+    .o-content {
+        @media (min-width:0) {display: block;}
+        @media (min-width:1000px) {display: flex;} 
+        max-width: var(--width); margin: 0 auto; display: flex; justify-content: space-between;
+        .o-left {
+            @media (min-width:0) {width: 100%; margin-bottom: 30px;}
+            @media (min-width:1000px) {width: 50%; margin-bottom: 0;} 
+            .o-title {
+                @media (min-width:0) {font-size: 28px; line-height: 30px; margin-bottom: 30px;}
+                @media (min-width:1000px) {font-size: 60px; line-height: 64px; margin-bottom: 60px;} 
+                color: var(--color-txt2); font-weight: bold; text-transform: uppercase;
+            }
+            ul {
+                list-style: none; margin: 0; padding: 0;
+                li {
+                    @media (min-width:0) {margin-bottom: 15px; font-size: 16px;}
+                    @media (min-width:1000px) {margin-bottom: 30px; font-size: 26px;} 
+                    display: flex; gap: 15px;
+                    &:last-child {margin-bottom: 0;}
+                    &::before {font-family: "fa-light"; content: "\f061"; transform: translateY(5px);}
+                }
+            }
+        }
+        .o-right {
+            @media (min-width:0) {width: 100%; text-align: center;}
+            @media (min-width:1000px) {width: 40%; text-align: end;}             
+            img {max-width: 100%;}
+        }
+    }
+}

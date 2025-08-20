@@ -1,0 +1,12 @@
+<ul class="menu-langs">
+    @for (l of langs; track lang.id) {
+        <li>
+            <a  
+                [routerLink]="getLangLink(l, 'url')" 
+                [fragment]="getLangLink(l, 'fragment')" 
+                [queryParams]="getLangLink(l, 'queryParams')"             
+                [class.active]="lang.id === l.id"
+            >{{l.slug}}</a>
+        </li>
+    }    
+</ul>                

@@ -1,0 +1,41 @@
+.contacts {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;}  
+    position: relative;
+    .c-content {
+        max-width: var(--width); margin: 0 auto;
+        .c-block {
+            @media (min-width:0) {padding: 30px; border-radius: 30px;}
+            @media (min-width:1000px) {padding: 60px; border-radius: 60px;}  
+            background: var(--color-bg3); 
+            .c-title {
+                @media (min-width:0) {font-size: 16px; margin-bottom: 15px;}
+                @media (min-width:1000px) {font-size: 34px; margin-bottom: 30px;}  
+                text-align: center; color: var(--color-txt2); text-transform: uppercase; font-weight: bold;
+            }
+            .c-items {
+                display: flex; justify-content: center; gap:15px;
+                .c-item {
+                    @media (min-width:0) {font-size: 24px;}
+                    @media (min-width:1000px) {font-size: 34px;}                     
+                    a {         
+                        color: var(--color-txt2); text-decoration: none;
+                        @media (hover: hover) and (pointer: fine) {&:hover {color: var(--color-txt1);}}
+                        &.tg::before {font-family: "fa-brands"; content: "\f2c6";}
+                        &.do::before {font-family: "fa-brands"; content: "\f392";}
+                        &.tw::before {font-family: "fa-brands"; content: "\e61b";}
+                        &.yt::before {font-family: "fa-brands"; content: "\f167";}
+                        &.li::before {font-family: "fa-brands"; content: "\f08c";}
+                        &.mail::before {font-family: "fa-solid"; content: "\f0e0";}
+                    }                
+                }
+            }
+            .c-btnwrap {
+                @media (min-width:0) {margin-bottom: 15px;}
+                @media (min-width:1000px) {margin-bottom: 30px;}  
+                display: flex; justify-content: center;
+                .btn {padding: 0 30px;}
+            }
+        }
+    }      
+}

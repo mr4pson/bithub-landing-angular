@@ -1,0 +1,28 @@
+<div class="mm-bg" [class.active]="active" (click)="onClose()"></div>
+<div class="mm" [class.active]="active">
+    <div class="mm-head"><div class="smallbtn close" (click)="onClose()"><span></span></div></div>
+    <div class="mm-main">
+        <!-- warning! "mm-menu" used in function! -->
+        <div class="mm-menu"><menu-main></menu-main></div>
+        <div class="mm-contacts">
+            <div class="mmc-section">
+                <div class="mmc-title">{{words['contacts']?.['title-contacts']?.[lang.slug]}}</div>
+                <div class="mmc-contacts">
+                    @if (words['contacts']?.['tg']?.[lang.slug]) {<div class="mmc-contact"><a target="_blank" class="tg" [href]="words['contacts']?.['tg']?.[lang.slug]"></a></div>}
+                    @if (words['contacts']?.['do']?.[lang.slug]) {<div class="mmc-contact"><a target="_blank" class="do" [href]="words['contacts']?.['do']?.[lang.slug]"></a></div>}
+                    @if (words['contacts']?.['tw']?.[lang.slug]) {<div class="mmc-contact"><a target="_blank" class="tw" [href]="words['contacts']?.['tw']?.[lang.slug]"></a></div>}
+                    @if (words['contacts']?.['yt']?.[lang.slug]) {<div class="mmc-contact"><a target="_blank" class="yt" [href]="words['contacts']?.['yt']?.[lang.slug]"></a></div>}
+                    @if (words['contacts']?.['li']?.[lang.slug]) {<div class="mmc-contact"><a target="_blank" class="li" [href]="words['contacts']?.['li']?.[lang.slug]"></a></div>}
+                    @if (words['contacts']?.['mail']?.[lang.slug]) {<div class="mmc-contact"><a class="mail" href="mailto:{{words['contacts']?.['mail']?.[lang.slug]}}"></a></div>}                      
+                </div>
+            </div>
+            <!--
+            <div class="mmc-section">
+                <div class="mmc-title">{{words['contacts']?.['title-knowledge']?.[lang.slug]}}</div>
+                @if (words['contacts']?.['gitbook']?.[lang.slug]) {<div class="mmc-gitbook"><a target="_blank" [href]="words['contacts']?.['gitbook']?.[lang.slug]"><img src="/assets/images/gitbook.svg" alt="gitbook"><span>{{words['contacts']?.['title-gitbook']?.[lang.slug]}}</span></a></div>}
+            </div>
+            -->
+        </div>   
+        <div class="mm-langs"><menu-langs></menu-langs></div>     
+    </div>    
+</div>

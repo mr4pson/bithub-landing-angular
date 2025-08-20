@@ -1,0 +1,24 @@
+<header [class.solid]="headerSolid">
+    <div class="h-left">
+        <div class="hl-logo">
+            <img class="big" src="/assets/images/logo-big.svg" alt="logo">
+            <img class="small" src="/assets/images/logo-small.svg" alt="logo">
+        </div>
+        <div class="hl-lang">
+            <span class="hll-btn" [class.active]="panelLangsActive" (click)="onTogglePanel('Langs', $event)">{{lang.slug}}</span>
+            <panel-langs [(active)]="panelLangsActive"></panel-langs>
+        </div>
+    </div>
+    <div class="h-right">
+        <a class="hr-appbtn btn gold" [href]="mainsiteUrl">
+            <span class="btn-text">{{words["common"]?.["btn-app"]?.[lang.slug]}}</span>
+            <span class="btn-icon link"></span>
+        </a>
+        <div class="hr-mmbtn smallbtn menu" (click)="onTogglePanel('Mob', $event)"><span></span></div>
+    </div>
+    <div class="h-center">
+        <nav><menu-main></menu-main></nav>
+    </div>    
+</header>
+
+<panel-mob [(active)]="panelMobActive"></panel-mob>

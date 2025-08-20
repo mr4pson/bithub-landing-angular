@@ -1,0 +1,26 @@
+<div class="intro">
+    <div class="i-block">
+        <h1>{{words['home']?.['intro-title']?.[lang.slug]}}</h1>
+        <div class="i-content">
+            <div class="ic-left">
+                <div class="icl-desc">{{words['home']?.['intro-desc']?.[lang.slug]}}</div>
+                <div class="icl-btnwrap">
+                    <a class="btn gold" [href]="mainsiteUrl">
+                        <span class="btn-text">{{words["common"]?.["btn-app"]?.[lang.slug]}}</span>
+                        <span class="btn-icon link"></span>
+                    </a>
+                </div>  
+            </div>
+            <div class="ic-right">
+                <div class="icr-video">
+                    <div class="icrv-content">
+                        @if (videoUrl) {
+                            <video src="/others/{{videoUrl}}" controls poster="/assets/images/poster1.webp"></video>      
+                        }
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <div class="i-blick"><div class="ib-content"></div></div>
+</div>

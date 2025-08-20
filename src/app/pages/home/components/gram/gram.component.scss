@@ -1,0 +1,58 @@
+.gram {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;}  
+    position: relative;
+    .g-content {
+        max-width: var(--width); margin: 0 auto;
+        .g-top {
+            @media (min-width:0) {display: block;}
+            @media (min-width:1000px) {display: flex;}
+            justify-content: space-between; align-items: center; margin-bottom: 60px; position: relative;
+            .g-imgwrap {
+                @media (min-width:0) {width: 150px; position: absolute;}
+                @media (min-width:1000px) {width: 40%; position: static;}
+                text-align: center; right: 0; bottom: -95px;
+                img {max-width: 100%; position: relative; z-index: 2;}
+            }
+            .g-title {
+                @media (min-width:0) {width: 200px; font-size: 28px; line-height: 30px;}
+                @media (min-width:640px) {width: 70%; font-size: 28px; line-height: 30px;}
+                @media (min-width:1000px) {width: 50%; font-size: 60px; line-height: 64px;} 
+                color: var(--color-txt2); font-weight: bold; text-transform: uppercase;                
+            }
+        }
+        .g-bottom {
+            @media (min-width:0) {display: block; background-image: none; padding: 30px; border:1px var(--color-border1) solid; }
+            @media (min-width:1000px) {display: flex; background-image: url("/assets/images/block2.svg"); padding: 60px; border:none;}
+            background-size: 100% 100%; gap: 30px; justify-content: space-between; border-radius: 30px; position: relative;
+            .g-desc {
+                @media (min-width:0) {font-size: 16px; margin-bottom: 30px;}
+                @media (min-width:1000px) {font-size: 18px; margin-bottom: 0;}
+                @media (min-width:1600px) {font-size: 24px; margin-bottom: 0;}
+                p {
+                    @media (min-width:0) {text-align: center;}
+                    @media (min-width:1000px) {text-align: start;}
+                    margin: 0; padding: 0;
+                }
+            }
+            .g-btnwrap {
+                @media (min-width:0) {display: flex;}
+                @media (min-width:1000px) {display: block;}
+                justify-content: center;
+                .btn {padding: 0 30px;}
+            }
+            .g-check {
+                @media (min-width:0) {width: 22px; height: 16px; right: auto; left: 45px; top: auto; bottom: -5px;}
+                @media (min-width:1000px) {width: 52px; height: 36px; right: 75px; left: auto; top: -20px; bottom: auto;}
+                position: absolute; 
+                img {width: 100%; height: 100%; position: relative; z-index: 2;}
+            }
+        }
+    }
+    .g-blick {
+        @media (min-width:0) {display: none;}
+        @media (min-width:1000px) {display: block;}  
+        position: absolute; left: 0; top: 50%; width: 977px; height: 977px; transform: translate(-50%, 0); 
+        .gb-content {width: 100%; height: 100%; border-radius: 50%; background-color: var(--color-blick1); filter: blur(500px); transform: translate3d(0, 0, 0);}
+    }
+}

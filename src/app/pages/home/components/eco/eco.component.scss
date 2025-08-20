@@ -1,0 +1,29 @@
+.eco {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;}  
+    position: relative;
+    .e-content {
+        max-width: var(--width); margin: 0 auto;
+        .e-block {
+            @media (min-width:0) {padding: 30px; background-image: url("/assets/images/block5s.svg");}
+            @media (min-width:640px) {padding: 30px; background-image: url("/assets/images/block5.svg");}
+            @media (min-width:1000px) {padding: 60px 120px; background-image: url("/assets/images/block5.svg");}  
+            background-size: 100% 100%; background-repeat: no-repeat;
+            .e-title {
+                @media (min-width:0) {font-size: 16px; margin-bottom: 15px;}
+                @media (min-width:1000px) {font-size: 34px; margin-bottom: 30px;}  
+                text-align: center; color: var(--color-txt2); text-transform: uppercase; font-weight: bold;
+            }
+            .e-btnwrap {
+                display: flex; justify-content: center;
+                .btn {padding: 0 30px;}
+            }
+        }
+    }  
+    .e-blick {
+        @media (min-width:0) {display: none;}
+        @media (min-width:1000px) {display: block;}  
+        position: absolute; left: 0; top: 50%; width: 977px; height: 977px; transform: translate(-50%, 0); 
+        .eb-content {width: 100%; height: 100%; border-radius: 50%; background-color: var(--color-blick1); filter: blur(500px); transform: translate3d(0, 0, 0);}
+    }  
+}

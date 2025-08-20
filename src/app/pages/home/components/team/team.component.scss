@@ -1,0 +1,48 @@
+.team {
+    @media (min-width:0) {padding: 30px 15px;}
+    @media (min-width:1000px) {padding: 75px 30px;} 
+    position: relative; 
+    .t-content {        
+        max-width: var(--width); margin: 0 auto; position: relative;
+        .t-row {
+            @media (min-width:0) {display: block; margin-bottom: 30px;}
+            @media (min-width:1000px) {display: flex; margin-bottom: 0;}  
+            display: flex; justify-content: space-between; align-items: center; 
+            &:last-child {margin-bottom: 0;}
+            &.reverse {flex-direction: row-reverse;}
+            .t-txt {
+                @media (min-width:0) {width: 80%; font-size: 16px; margin-bottom: 15px;}
+                @media (min-width:1000px) {width: 45%; font-size: 24px; margin-bottom: 0;}  
+                @media (min-width:1200px) {width: 45%; font-size: 34px; margin-bottom: 0;}  
+                font-weight: bold; color: var(--color-txt2); text-transform: uppercase; position: relative;
+                .t-ardown {
+                    @media (min-width:0) {display: block;}
+                    @media (min-width:1000px) {display: none;} 
+                    position: absolute; right: -30px; top: 0;
+                }   
+            }
+            .t-imgwrap {
+                @media (min-width:0) {width: 100%;}
+                @media (min-width:1000px) {width: 45%;}  
+                text-align: center;                
+                img {max-width: 100%;}
+            }  
+        }     
+        .t-arright {
+            @media (min-width:0) {display: none;}
+            @media (min-width:1000px) {display: block;}  
+            position: absolute; left: 50%; top: -30px; transform: translateX(-75%);
+        }   
+        .t-arleft {
+            @media (min-width:0) {display: none;}
+            @media (min-width:1000px) {display: block;}  
+            position: absolute; left: 50%; bottom: 0; transform: translateX(-75%);
+        }   
+    }
+    .t-blick {
+        @media (min-width:0) {display: none;}
+        @media (min-width:1000px) {display: block;}  
+        position: absolute; right: 0; top: 0; width: 977px; height: 977px; transform: translate(50%, 0); 
+        .tb-content {width: 100%; height: 100%; border-radius: 50%; background-color: var(--color-blick1); filter: blur(500px); transform: translate3d(0, 0, 0);}
+    }
+}

@@ -1,0 +1,18 @@
+footer {
+    @media (min-width:0) {padding: 15px; height: auto;}  
+    @media (min-width:1000px) {padding: 0 30px; height: 70px;} 
+    display: flex; justify-content: center; align-items: center; border-top: 1px var(--color-border1) solid;
+    nav {
+        ul {
+            @media (min-width:0) {display: block;}  
+            @media (min-width:1000px) {display: flex;} 
+            gap: 30px;
+            li {
+                @media (min-width:0) {margin-bottom: 15px;}  
+                @media (min-width:1000px) {margin-bottom: 0;} 
+                text-align: center;
+                &:last-child {margin-bottom: 0;}
+            }
+        }
+    }
+}
