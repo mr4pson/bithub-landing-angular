@@ -33,7 +33,9 @@ export class CListArticlesComponent implements OnInit {
   private async initArticles(): Promise<void> {
     try {
       this.loading = true;
-      const data = await this.articleRepository.loadChunk(0, 1000);
+      const data = await this.articleRepository.loadChunk(0, 1000, 'id', 1, {
+        is_for_landing: true,
+      });
       this.articles = data.data;
       this.loading = false;
     } catch (err) {

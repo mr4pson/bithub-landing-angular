@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['menu-main.component.scss'],
 })
 export class CMenuMainComponent {
-  public items: string[] = ['about', 'results', 'how', 'contacts'];
+  public items: string[] = ['about', 'results', 'articles', 'how', 'contacts'];
 
   constructor(private appService: CAppService, private router: Router) {}
 
