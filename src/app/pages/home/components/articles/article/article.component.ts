@@ -22,7 +22,7 @@ export class CArticleComponent {
   }
 
   openArticle() {
-    this.appService.popupLoginActive = true;
-    this.appService.selectedArticle = this.article;
+    // this.appService.popupArticleActive = true;
+    // this.appService.selectedArticle = this.article;
   }
 }

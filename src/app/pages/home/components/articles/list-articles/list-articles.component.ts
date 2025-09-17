@@ -3,6 +3,7 @@ import { IArticle } from 'src/app/model/entities/article';
 import { ILang } from 'src/app/model/entities/lang.interface';
 import { IWords } from 'src/app/model/entities/words.interface';
 import { CAppService } from 'src/app/services/app.service';
+import { CDataService } from 'src/app/services/data.service';
 import { CArticleRepository } from 'src/app/services/repositories/article.repository';
 
 @Component({
@@ -11,10 +12,10 @@ import { CArticleRepository } from 'src/app/services/repositories/article.reposi
   styleUrls: ['list-articles.component.scss'],
 })
 export class CListArticlesComponent implements OnInit {
-  public articles: IArticle[];
   public loading: boolean = false;
 
   constructor(
+    public dataService: CDataService,
     private appService: CAppService,
     private articleRepository: CArticleRepository
   ) {}
@@ -36,7 +37,8 @@ export class CListArticlesComponent implements OnInit {
       const data = await this.articleRepository.loadChunk(0, 1000, 'id', 1, {
         is_for_landing: true,
       });
-      this.articles = data.data;
+      this.dataService.articles = data.data;
+
       this.loading = false;
     } catch (err) {
       this.appService.notifyError(err);

@@ -4,15 +4,25 @@ import { CHomePage } from './pages/home/page/home.page';
 import { CTestModule } from './pages/test/test.module';
 
 const routes: Routes = [
-    {path: "", component: CHomePage, data: {mark: "home"}}, // mark for reuse
-    {path: "ru", pathMatch: "full", redirectTo: "/"},
-    {path: ":lang", component: CHomePage, data: {mark: "home"}},  // mark for reuse
-    {path: ":lang/test", loadChildren: () => CTestModule},
-    {path: "**", redirectTo: "/"},
+  { path: '', component: CHomePage, data: { mark: 'home' } }, // mark for reuse
+  { path: 'ru', pathMatch: 'full', redirectTo: '/' },
+  { path: ':lang', component: CHomePage, data: { mark: 'home' } }, // mark for reuse
+  {
+    path: 'articles/:slug',
+    component: CHomePage,
+    data: { popupArticle: true },
+  },
+  {
+    path: ':lang/articles/:slug',
+    component: CHomePage,
+    data: { popupArticle: true },
+  },
+  { path: ':lang/test', loadChildren: () => CTestModule },
+  //   { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class CAppRoutingModule { }
+export class CAppRoutingModule {}

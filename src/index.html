@@ -1,19 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Drop Guide</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
-</head>
-<body>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png" />
+    <link rel="canonical" />
+    <link rel="alternate" hreflang="ua" href="https://drop.guide/ua/" />
+    <link rel="alternate" hreflang="en" href="https://drop.guide/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://drop.guide/" />
+  </head>
+  <body>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T2NHBPHM");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T2NHBPHM"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=104108271",
+        "ym"
+      );
+
+      ym(104108271, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/104108271"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <!-- /Yandex.Metrika counter -->
     <app-root></app-root>
-    <div id="splash"><img src="/assets/images/logo-big.svg" alt="Bithab"></div>
+    <div id="splash">
+      <img src="/assets/images/logo-big.svg" alt="Bithab" />
+    </div>
     <style>
-        #splash {position: fixed; z-index: 100000; left: 0; top: 0; width: 100%; height: 100%; background-color: #131417; display: flex; justify-content: center; align-items: center; transition:0.5s;}
-        #splash.transparent {opacity: 0;}
-        #splash img {max-height: 40px; max-width: 200px;}
+      #splash {
+        position: fixed;
+        z-index: 100000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #131417;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+      }
+      #splash.transparent {
+        opacity: 0;
+      }
+      #splash img {
+        max-height: 40px;
+        max-width: 200px;
+      }
     </style>
-</body>
+  </body>
 </html>

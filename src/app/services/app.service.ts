@@ -20,7 +20,7 @@ export class CAppService {
   // iface
   public win: HTMLElement = null;
   public notifyErrorActive: boolean = false;
-  public popupLoginActive: boolean = false;
+  public popupArticleActive = false;
   public notifyErrorMsg: string = '';
   public notifyErrorTimer: number = null;
   public selectedArticle: IArticle = null;

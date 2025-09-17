@@ -12,6 +12,7 @@ export interface IArticle extends CEntity {
   readonly contentshort?: IMultilangable;
   readonly title?: IMultilangable;
   readonly description?: IMultilangable;
+  readonly canonical?: IMultilangable;
   readonly h1?: IMultilangable;
   was_read?: boolean;
 }

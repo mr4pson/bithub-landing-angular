@@ -14,6 +14,7 @@ import { IReadingUpdate } from '../model/dto/reading.update';
 
 @Injectable()
 export class CDataService {
+  public articles: IArticle[] = [];
   constructor(private http: HttpClient) {}
 
   public settingsAll(): Observable<IResponse<ISettings>> {
