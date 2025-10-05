@@ -7,7 +7,7 @@ export interface IConfig {
 
 const host = window.location.host;
 const configs: IKeyValue<IConfig> = {
-  'localhost:64591': {
+  'localhost:53582': {
     apiUrl: 'http://localhost:3030/api/landing',
     mainsiteUrl: 'https://app.bithab.vio.net.ua',
   },

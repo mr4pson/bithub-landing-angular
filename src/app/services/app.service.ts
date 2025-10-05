@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -8,6 +8,7 @@ import { IWords } from 'src/app/model/entities/words.interface';
 import { IKeyValue } from 'src/app/model/keyvalue.interface';
 import { IFiles } from 'src/app/model/entities/files.interface';
 import { IArticle } from '../model/entities/article';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable()
 export class CAppService {
@@ -28,7 +29,8 @@ export class CAppService {
   constructor(
     private titleService: Title,
     private metaService: Meta,
-    private router: Router
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   get url(): string[] {
@@ -61,6 +63,7 @@ export class CAppService {
   public setLang(lang: ILang): void {
     if (this.lang.value?.id !== lang.id) {
       this.lang.next(lang);
+      this.setCanonical(lang);
     }
   }
 
@@ -206,5 +209,24 @@ export class CAppService {
     return new Promise((resolve, reject) => {
       setTimeout(() => resolve(), ms);
     });
+  }
+
+  public setCanonical(lang: ILang) {
+    const base = 'https://drop.guide';
+    let href = base;
+    if (lang.slug && lang.slug !== 'ru') {
+      href += '/' + lang.slug;
+    }
+    let link: HTMLLinkElement = this.document.querySelector(
+      "link[rel='canonical']"
+    );
+    if (!link) {
+      link = this.document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+
+      this.document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
+    link.setAttribute('hreflang', lang.slug !== 'ru' ? lang.slug : 'x-default');
   }
 }

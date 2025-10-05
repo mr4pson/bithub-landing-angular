@@ -18,7 +18,7 @@ const routes: Routes = [
     data: { popupArticle: true },
   },
   { path: ':lang/test', loadChildren: () => CTestModule },
-  //   { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

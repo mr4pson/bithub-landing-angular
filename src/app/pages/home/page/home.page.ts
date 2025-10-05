@@ -49,24 +49,24 @@ export class CHomePage implements OnInit {
           (article) => article.slug === slug
         );
         this.popupArticleActive = true;
-        this.updateCanonicalLink(
-          this.appService.selectedArticle.canonical[
-            this.appService.lang.value.slug
-          ]
-        );
+        // this.updateCanonicalLink(
+        //   this.appService.selectedArticle.canonical[
+        //     this.appService.lang.value.slug
+        //   ]
+        // );
       } else {
         this.popupArticleActive = false;
         this.appService.selectedArticle = null;
       }
     });
   }
-  private updateCanonicalLink(newCanonicalUrl: string) {
-    const canonicalLink = this.document.querySelector('link[rel="canonical"]');
-    const metaDes = this.document.querySelector('meta[name="description"]');
-    console.log('canonical link', canonicalLink);
-    if (canonicalLink) {
-      console.log('Canonical tag updated', canonicalLink);
-      this.renderer.setAttribute(canonicalLink, 'href', newCanonicalUrl);
-    }
-  }
+  // private updateCanonicalLink(newCanonicalUrl: string) {
+  //   const canonicalLink = this.document.querySelector('link[rel="canonical"]');
+  //   const metaDes = this.document.querySelector('meta[name="description"]');
+  //   console.log('canonical link', canonicalLink);
+  //   if (canonicalLink) {
+  //     console.log('Canonical tag updated', canonicalLink);
+  //     this.renderer.setAttribute(canonicalLink, 'href', newCanonicalUrl);
+  //   }
+  // }
 }
