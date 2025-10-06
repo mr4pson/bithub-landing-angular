@@ -14,6 +14,7 @@ import { CHowComponent } from './components/how/how.component';
 import { CListArticlesComponent } from './components/articles/list-articles/list-articles.component';
 import { CArticleComponent } from './components/articles/article/article.component';
 import { CPopupArticleComponent } from 'src/app/components/popups/popup-article/popup-article.component';
+import { CSafePipe } from 'src/app/pipes/safe.pipe';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -31,6 +32,7 @@ import { CPopupArticleComponent } from 'src/app/components/popups/popup-article/
     CListArticlesComponent,
     CArticleComponent,
     CPopupArticleComponent,
+    CSafePipe,
   ],
   exports: [CHomePage],
 })

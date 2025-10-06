@@ -45,14 +45,18 @@ export class CAppService {
   ////////////////////////
 
   public notifyError(error: any): void {
-    this.notifyErrorTimer && window.clearTimeout(this.notifyErrorTimer);
+    if (typeof window !== 'undefined') {
+      this.notifyErrorTimer && window.clearTimeout(this.notifyErrorTimer);
+    }
     this.notifyErrorMsg =
       typeof error !== 'string' ? JSON.stringify(error) : error;
     this.notifyErrorActive = true;
-    this.notifyErrorTimer = window.setTimeout(() => {
-      this.notifyErrorActive = false;
-      this.notifyErrorTimer = null;
-    }, 3000);
+    if (typeof window !== 'undefined') {
+      this.notifyErrorTimer = window.setTimeout(() => {
+        this.notifyErrorActive = false;
+        this.notifyErrorTimer = null;
+      }, 3000);
+    }
     console.log(error);
   }
 
@@ -172,7 +176,7 @@ export class CAppService {
     return new Promise((resolve, reject) => {
       let counter = 0;
       const check = () => {
-        const elements = document.querySelectorAll(selector);
+        const elements = this.document.querySelectorAll(selector);
 
         if (elements.length) {
           resolve(Array.from(elements) as HTMLElement[]);
@@ -194,7 +198,7 @@ export class CAppService {
   public getElementById(id: string): Promise<HTMLElement> {
     return new Promise((resolve, reject) => {
       const check = () => {
-        const element = document.getElementById(id);
+        const element = this.document.getElementById(id);
         element ? resolve(element) : setTimeout(() => check(), 100);
       };
       check();

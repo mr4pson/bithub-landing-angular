@@ -8,10 +8,9 @@ import { CHomeModule } from './pages/home/home.module';
 import { CServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CComponentsModule } from './components/components.module';
-import { CSafePipe } from './pipes/safe.pipe';
 
 @NgModule({
-  declarations: [CSafePipe, CAppComponent],
+  declarations: [CAppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

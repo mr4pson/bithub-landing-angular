@@ -9,7 +9,6 @@ import {
 import { Router } from '@angular/router';
 import { CAppService } from 'src/app/services/app.service';
 import { CPopupComponent } from '../popup.component';
-import { IArticle } from 'src/app/model/entities/article';
 
 @Component({
   selector: 'popup-article',
@@ -17,7 +16,20 @@ import { IArticle } from 'src/app/model/entities/article';
   styleUrls: ['../../../styles/popups.scss', '../../../styles/telegraph.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CPopupArticleComponent extends CPopupComponent implements OnInit {
+export class CPopupArticleComponent
+  extends CPopupComponent
+  implements OnInit, OnChanges
+{
+  get title(): string {
+    return (
+      this.appService.selectedArticle?.title[this.lang.slug] ||
+      this.appService.selectedArticle?.name[this.lang.slug]
+    );
+  }
+  get description(): string {
+    return this.appService.selectedArticle?.description[this.lang.slug];
+  }
+
   constructor(
     public override appService: CAppService,
     protected router: Router
@@ -29,11 +41,26 @@ export class CPopupArticleComponent extends CPopupComponent implements OnInit {
     super.onClose();
     this.router.navigate([this.appService.lang.value.slug]);
     this.appService.selectedArticle = null;
+    this.appService.setTitle('Drop Guide');
+    this.appService.setMeta(
+      'name',
+      'description',
+      'All you need to know about dropshipping business'
+    );
   }
 
   public override ngOnInit(): void {
     super.ngOnInit();
+  }
 
-    console.log(this.appService.selectedArticle);
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['active'] && this.active) {
+      this.initSEO();
+    }
+  }
+
+  private initSEO(): void {
+    this.appService.setTitle(this.title);
+    this.appService.setMeta('name', 'description', this.description);
   }
 }

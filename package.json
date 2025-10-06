@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:ssr": "ng build && ng run bithab:server",
+    "serve:ssr": "node dist/bithab/server/main.js",
+    "dev:ssr": "ng run bithab:serve-ssr"
   },
   "private": true,
   "dependencies": {
@@ -17,7 +20,12 @@
     "@angular/forms": "^17.0.0",
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/platform-server": "17.0.0",
     "@angular/router": "^17.0.0",
+    "@angular/ssr": "^20.3.4",
+    "@nguniversal/builders": "16",
+    "@nguniversal/express-engine": "^16.2.0",
+    "@types/node": "^24.6.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
