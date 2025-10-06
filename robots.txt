@@ -1,0 +1,14 @@
+User-agent: *
+
+Disallow: /canonical
+Disallow: /cart
+Disallow: /login
+Disallow: /promocje
+
+
+
+Clean-param: trk /
+Clean-param: fbclid /
+
+Host: https://drop.guide/
+Sitemap: https://drop.guide/sitemap.xml
