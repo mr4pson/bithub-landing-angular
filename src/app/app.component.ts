@@ -63,7 +63,7 @@ export class CAppComponent implements OnInit, AfterViewInit {
 
   public async ngOnInit(): Promise<void> {
     await Promise.all([
-      this.appService.initPage('main-landing'),
+      this.initPage(),
       this.initSettings(),
       this.initLangs(),
       this.initWords(),
@@ -83,6 +83,11 @@ export class CAppComponent implements OnInit, AfterViewInit {
     } catch (err) {
       this.appService.notifyError(err);
     }
+  }
+
+  private async initPage() {
+    await this.appService.initPage('main-landing');
+    return this.appService.initSEO();
   }
 
   private async initLangs(): Promise<void> {
