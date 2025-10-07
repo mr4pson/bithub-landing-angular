@@ -1,6 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CAppService } from 'src/app/services/app.service';
 import { CDataService } from 'src/app/services/data.service';
 import { CArticleRepository } from 'src/app/services/repositories/article.repository';
@@ -22,14 +21,13 @@ export class CHomePage implements OnInit {
     private appService: CAppService,
     private route: ActivatedRoute,
     private dataService: CDataService,
-    private articleRepository: CArticleRepository,
-    @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2
+    private articleRepository: CArticleRepository // @Inject(DOCUMENT) private document: Document, // private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(async (params) => {
       const slug = params.get('slug');
+
       if (slug) {
         // Загружаем статью по slug и открываем popup
         if (!this.dataService.articles.length) {
@@ -60,6 +58,7 @@ export class CHomePage implements OnInit {
       }
     });
   }
+
   // private updateCanonicalLink(newCanonicalUrl: string) {
   //   const canonicalLink = this.document.querySelector('link[rel="canonical"]');
   //   const metaDes = this.document.querySelector('meta[name="description"]');

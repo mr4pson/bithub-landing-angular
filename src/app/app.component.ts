@@ -61,6 +61,7 @@ export class CAppComponent implements OnInit, AfterViewInit {
 
   public async ngOnInit(): Promise<void> {
     await Promise.all([
+      this.appService.initPage('main-landing'),
       this.initSettings(),
       this.initLangs(),
       this.initWords(),

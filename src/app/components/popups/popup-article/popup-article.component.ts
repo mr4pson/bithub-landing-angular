@@ -41,16 +41,15 @@ export class CPopupArticleComponent
     super.onClose();
     this.router.navigate([this.appService.lang.value.slug]);
     this.appService.selectedArticle = null;
-    this.appService.setTitle('Drop Guide');
-    this.appService.setMeta(
-      'name',
-      'description',
-      'All you need to know about dropshipping business'
-    );
+    this.appService.initSEO();
   }
 
   public override ngOnInit(): void {
     super.ngOnInit();
+
+    if (this.active) {
+      this.initSEO();
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

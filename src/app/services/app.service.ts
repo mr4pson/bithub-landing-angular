@@ -9,10 +9,13 @@ import { IKeyValue } from 'src/app/model/keyvalue.interface';
 import { IFiles } from 'src/app/model/entities/files.interface';
 import { IArticle } from '../model/entities/article';
 import { DOCUMENT } from '@angular/common';
+import { IPage } from '../model/entities/page';
+import { CPageRepository } from './repositories/page.repository';
 
 @Injectable()
 export class CAppService {
   // data
+  public page: IPage = null;
   public settings: ISettings = {};
   public lang: BehaviorSubject<ILang> = new BehaviorSubject(null);
   public langs: ILang[] = [];
@@ -30,6 +33,7 @@ export class CAppService {
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
+    protected pageRepository: CPageRepository,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
@@ -38,6 +42,16 @@ export class CAppService {
   }
   get headerOffset(): number {
     return this.win.offsetWidth < 1000 ? 50 : 70;
+  }
+
+  get title(): string {
+    return (
+      this.page?.title[this.lang.value.slug] ||
+      this.page?.name[this.lang.value.slug]
+    );
+  }
+  get description(): string {
+    return this.page?.description[this.lang.value.slug];
   }
 
   ////////////////////////
@@ -69,6 +83,25 @@ export class CAppService {
       this.lang.next(lang);
       this.setCanonical(lang);
     }
+  }
+
+  public async initPage(slug: string): Promise<void> {
+    try {
+      this.page = null;
+      await this.pause(300);
+      this.page = await this.pageRepository.loadOne(slug);
+
+      this.initSEO();
+      console.log(this.title);
+    } catch (err) {
+      console.log(err);
+      this.notifyError(err);
+    }
+  }
+
+  public initSEO(): void {
+    this.setTitle(this.title);
+    this.setMeta('name', 'description', this.description);
   }
 
   ////////////////////////

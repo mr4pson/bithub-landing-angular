@@ -7,6 +7,7 @@ import { CWordRepository } from './repositories/word.repository';
 import { CFileRepository } from './repositories/file.repository';
 import { CAwardRepository } from './repositories/award.repository';
 import { CArticleRepository } from './repositories/article.repository';
+import { CPageRepository } from './repositories/page.repository';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { CArticleRepository } from './repositories/article.repository';
     CFileRepository,
     CAwardRepository,
     CArticleRepository,
+    CPageRepository,
   ],
 })
 export class CServicesModule {}

@@ -11,6 +11,7 @@ import { IAward } from '../model/entities/award.interface';
 import { IGetList } from '../model/dto/getlist.interface';
 import { IArticle } from '../model/entities/article';
 import { IReadingUpdate } from '../model/dto/reading.update';
+import { IPage } from '../model/entities/page';
 
 @Injectable()
 export class CDataService {
@@ -35,6 +36,10 @@ export class CDataService {
 
   public awardsAll(): Observable<IResponse<IAward[]>> {
     return this.post('awards/all');
+  }
+
+  public pagesOne(slug: string): Observable<IResponse<IPage>> {
+    return this.post(`pages/one/${slug}`);
   }
 
   public articlesChunk(dto: IGetList): Observable<IResponse<IArticle[]>> {
