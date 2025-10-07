@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { CAppService } from 'src/app/services/app.service';
 import { CDataService } from 'src/app/services/data.service';
 import { CArticleRepository } from 'src/app/services/repositories/article.repository';
@@ -9,7 +10,8 @@ import { CArticleRepository } from 'src/app/services/repositories/article.reposi
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class CHomePage implements OnInit {
+export class CHomePage implements OnInit, OnDestroy {
+  private subscription: any;
   get popupArticleActive(): boolean {
     return this.appService.popupArticleActive;
   }
@@ -25,7 +27,31 @@ export class CHomePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(async (params) => {
+    (async () => {
+      const slug = (this.route.params as BehaviorSubject<{ slug: string }>)
+        .value.slug;
+
+      if (slug) {
+        if (!this.dataService.articles.length) {
+          const data = await this.articleRepository.loadChunk(
+            0,
+            1000,
+            'id',
+            1,
+            {
+              slug,
+            }
+          );
+          this.dataService.articles = data.data;
+        }
+
+        this.appService.selectedArticle = this.dataService.articles.find(
+          (article) => article.slug === slug
+        );
+        this.popupArticleActive = true;
+      }
+    })();
+    this.subscription = this.route.paramMap.subscribe(async (params) => {
       const slug = params.get('slug');
 
       if (slug) {
@@ -57,6 +83,12 @@ export class CHomePage implements OnInit {
         this.appService.selectedArticle = null;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   // private updateCanonicalLink(newCanonicalUrl: string) {
