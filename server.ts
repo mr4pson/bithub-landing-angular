@@ -33,6 +33,12 @@ export function app(): express.Express {
     })
   );
 
+  // Serve sitemap.xml and robots.txt from the project root
+  server.get(['/sitemap.xml', '/robots.txt'], (req, res) => {
+    const fileName = req.path.substring(1); // remove leading '/'
+    res.sendFile(join(process.cwd(), fileName));
+  });
+
   server.get('*', (req, res) => {
     res.render('index.html', { req });
   });
