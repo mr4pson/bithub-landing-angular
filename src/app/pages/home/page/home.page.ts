@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { CAppService } from 'src/app/services/app.service';
 import { CDataService } from 'src/app/services/data.service';
 import { CArticleRepository } from 'src/app/services/repositories/article.repository';
@@ -27,33 +26,16 @@ export class CHomePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    (async () => {
-      const slug = (this.route.params as BehaviorSubject<{ slug: string }>)
-        .value.slug;
-
-      if (slug) {
-        if (!this.dataService.articles.length) {
-          const data = await this.articleRepository.loadChunk(
-            0,
-            1000,
-            'id',
-            1,
-            {
-              slug,
-            }
-          );
-          this.dataService.articles = data.data;
-        }
-
-        this.appService.selectedArticle = this.dataService.articles.find(
-          (article) => article.slug === slug
-        );
-        this.popupArticleActive = true;
-      }
-    })();
+    // this.route.data.subscribe((data) => {
+    //   console.log(data);
+    //   if (data['article']) {
+    //     this.appService.selectedArticle = data['article'];
+    //     this.popupArticleActive = true;
+    //     // this.initSEO();
+    //   }
+    // });
     this.subscription = this.route.paramMap.subscribe(async (params) => {
       const slug = params.get('slug');
-
       if (slug) {
         // Загружаем статью по slug и открываем popup
         if (!this.dataService.articles.length) {
@@ -68,7 +50,6 @@ export class CHomePage implements OnInit, OnDestroy {
           );
           this.dataService.articles = data.data;
         }
-
         this.appService.selectedArticle = this.dataService.articles.find(
           (article) => article.slug === slug
         );

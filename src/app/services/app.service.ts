@@ -54,6 +54,16 @@ export class CAppService {
     return this.page?.description[this.lang.value.slug];
   }
 
+  get articleTitle(): string {
+    return (
+      this.selectedArticle?.title[this.lang.value.slug] ||
+      this.selectedArticle?.name[this.lang.value.slug]
+    );
+  }
+  get articleDescription(): string {
+    return this.selectedArticle?.description[this.lang.value.slug];
+  }
+
   ////////////////////////
   // errors
   ////////////////////////
@@ -91,7 +101,7 @@ export class CAppService {
       await this.pause(300);
       this.page = await this.pageRepository.loadOne(slug);
 
-      this.initSEO();
+      // this.initSEO();
       console.log(this.title);
     } catch (err) {
       console.log(err);

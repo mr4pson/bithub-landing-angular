@@ -6,7 +6,7 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CAppService } from 'src/app/services/app.service';
 import { CPopupComponent } from '../popup.component';
 
@@ -20,19 +20,10 @@ export class CPopupArticleComponent
   extends CPopupComponent
   implements OnInit, OnChanges
 {
-  get title(): string {
-    return (
-      this.appService.selectedArticle?.title[this.lang.slug] ||
-      this.appService.selectedArticle?.name[this.lang.slug]
-    );
-  }
-  get description(): string {
-    return this.appService.selectedArticle?.description[this.lang.slug];
-  }
-
   constructor(
     public override appService: CAppService,
-    protected router: Router
+    protected router: Router,
+    private route: ActivatedRoute
   ) {
     super(appService);
   }
@@ -46,7 +37,13 @@ export class CPopupArticleComponent
 
   public override ngOnInit(): void {
     super.ngOnInit();
-
+    // this.route.data.subscribe((data) => {
+    //   if (data['article']) {
+    //     this.appService.selectedArticle = data['article'];
+    //     this.appService.popupArticleActive = true;
+    //     this.initSEO();
+    //   }
+    // });
     if (this.active) {
       this.initSEO();
     }
@@ -59,7 +56,11 @@ export class CPopupArticleComponent
   }
 
   private initSEO(): void {
-    this.appService.setTitle(this.title);
-    this.appService.setMeta('name', 'description', this.description);
+    this.appService.setTitle(this.appService.articleTitle);
+    this.appService.setMeta(
+      'name',
+      'description',
+      this.appService.articleDescription
+    );
   }
 }

@@ -18,6 +18,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { ISettings } from './model/entities/settings.interface';
 import { filter } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+import { CArticleRepository } from './services/repositories/article.repository';
 
 @Component({
   selector: 'app-root',
@@ -40,6 +41,7 @@ export class CAppComponent implements OnInit, AfterViewInit {
     private fileRepository: CFileRepository,
     private router: Router,
     private renderer: Renderer2,
+    private articleRepository: CArticleRepository,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
@@ -87,6 +89,24 @@ export class CAppComponent implements OnInit, AfterViewInit {
     try {
       this.appService.langs = await this.langRepository.loadAll();
       this.initLang(this.router.url.split('/')[1]);
+      const slug = await this.router.url.split('/')[3];
+
+      if (slug && !slug.includes('.')) {
+        const article = await this.articleRepository.loadOne(slug);
+        this.appService.selectedArticle = article;
+        this.appService.popupArticleActive = true;
+
+        this.appService.setTitle(this.appService.articleTitle);
+        this.appService.setMeta(
+          'name',
+          'description',
+          this.appService.articleDescription
+        );
+        console.log(this.router.url.split('/')[3]);
+      } else {
+        this.appService.initSEO();
+      }
+
       this.langsReady = true;
       this.router.events
         .pipe(filter((event) => event instanceof NavigationStart))
