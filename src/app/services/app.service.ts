@@ -102,7 +102,7 @@ export class CAppService {
       this.page = await this.pageRepository.loadOne(slug);
 
       // this.initSEO();
-      console.log(this.title);
+      // console.log(this.title);
     } catch (err) {
       console.log(err);
       this.notifyError(err);

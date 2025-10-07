@@ -8,6 +8,8 @@ import {
   ViewEncapsulation,
   Renderer2,
   Inject,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CAppService } from './services/app.service';
 import { CLangRepository } from './services/repositories/lang.repository';
@@ -24,6 +26,7 @@ import { CArticleRepository } from './services/repositories/article.repository';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class CAppComponent implements OnInit, AfterViewInit {
@@ -41,6 +44,7 @@ export class CAppComponent implements OnInit, AfterViewInit {
     private fileRepository: CFileRepository,
     private router: Router,
     private renderer: Renderer2,
+    private cdr: ChangeDetectorRef,
     private articleRepository: CArticleRepository,
     @Inject(DOCUMENT) private document: Document
   ) {}
@@ -62,10 +66,28 @@ export class CAppComponent implements OnInit, AfterViewInit {
   }
 
   public async ngOnInit(): Promise<void> {
+    await this.initLangs();
+    const slug = await this.router.url.split('/')[3];
+
+    if (slug && !slug.includes('.')) {
+      const article = await this.articleRepository.loadOne(slug);
+      this.appService.selectedArticle = article;
+      this.appService.popupArticleActive = true;
+
+      this.appService.setTitle(this.appService.articleTitle);
+      this.appService.setMeta(
+        'name',
+        'description',
+        this.appService.articleDescription
+      );
+      console.log(this.router.url.split('/')[3]);
+      // this.cdr.detectChanges();
+    } else {
+      await this.initPage();
+      this.appService.initSEO();
+    }
     await Promise.all([
-      this.initPage(),
       this.initSettings(),
-      this.initLangs(),
       this.initWords(),
       this.initFiles(),
     ]);
@@ -94,23 +116,6 @@ export class CAppComponent implements OnInit, AfterViewInit {
     try {
       this.appService.langs = await this.langRepository.loadAll();
       this.initLang(this.router.url.split('/')[1]);
-      const slug = await this.router.url.split('/')[3];
-
-      if (slug && !slug.includes('.')) {
-        const article = await this.articleRepository.loadOne(slug);
-        this.appService.selectedArticle = article;
-        this.appService.popupArticleActive = true;
-
-        this.appService.setTitle(this.appService.articleTitle);
-        this.appService.setMeta(
-          'name',
-          'description',
-          this.appService.articleDescription
-        );
-        console.log(this.router.url.split('/')[3]);
-      } else {
-        this.appService.initSEO();
-      }
 
       this.langsReady = true;
       this.router.events
